@@ -70,7 +70,9 @@ class _SkeletonGridLoaderState extends State<SkeletonGridLoader> {
           direction: direction,
           period: widget.period,
           child: GridView.builder(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
+            primary: false,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (_, __) => Container(
               child: widget.builder,

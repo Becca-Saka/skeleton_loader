@@ -20,6 +20,9 @@ class SkeletonLoader extends StatefulWidget {
   /// Defaults to ShimmerDirection.rtl
   final SkeletonDirection direction;
 
+  /// The Scroll Direction of the item list
+  final Axis scrollDirection;
+
   /// Duration in which the transition takes place
   /// Defaults to Duration(seconds: 2)
   final Duration period;
@@ -31,6 +34,7 @@ class SkeletonLoader extends StatefulWidget {
     this.baseColor = const Color(0xFFE0E0E0),
     this.highlightColor = const Color(0xFFF5F5F5),
     this.direction = SkeletonDirection.ltr,
+    this.scrollDirection = Axis.vertical,
     this.period = const Duration(seconds: 2),
   }) : super(key: key);
 
@@ -51,7 +55,10 @@ class _SkeletonLoaderState extends State<SkeletonLoader> {
           direction: direction,
           period: widget.period,
           child: ListView.builder(
+            scrollDirection: widget.scrollDirection,
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
+            primary: false,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (_, __) => Container(
               child: widget.builder,
