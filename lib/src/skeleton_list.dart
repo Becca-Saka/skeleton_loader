@@ -47,26 +47,22 @@ class _SkeletonLoaderState extends State<SkeletonLoader> {
   Widget build(BuildContext context) {
     ShimmerDirection direction = getDirection(widget.direction);
 
-    return Column(
-      children: [
-        Shimmer.fromColors(
-          baseColor: widget.baseColor,
-          highlightColor: widget.highlightColor,
-          direction: direction,
-          period: widget.period,
-          child: ListView.builder(
-            scrollDirection: widget.scrollDirection,
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            primary: false,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (_, __) => Container(
-              child: widget.builder,
-            ),
-            itemCount: widget.items,
-          ),
+    return Shimmer.fromColors(
+      baseColor: widget.baseColor,
+      highlightColor: widget.highlightColor,
+      direction: direction,
+      period: widget.period,
+      child: ListView.builder(
+        scrollDirection: widget.scrollDirection,
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        // primary: false,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (_, __) => Container(
+          child: widget.builder,
         ),
-      ],
+        itemCount: widget.items,
+      ),
     );
   }
 }
